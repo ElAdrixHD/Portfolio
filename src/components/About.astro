@@ -1,0 +1,285 @@
+---
+// About section with animated cards and skills preview
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="title-number">01.</span>
+      <span class="title-text">About Me</span>
+      <span class="title-line"></span>
+    </h2>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p class="lead">
+          I'm a passionate full-stack developer with a love for creating beautiful, 
+          functional web experiences that make a difference.
+        </p>
+        <p>
+          With over 5 years of experience in web development, I specialize in building 
+          scalable applications using modern technologies. I enjoy tackling complex problems 
+          and turning them into simple, elegant solutions.
+        </p>
+        <p>
+          When I'm not coding, you can find me exploring new technologies, contributing to 
+          open-source projects, or sharing my knowledge through blog posts and tutorials.
+        </p>
+        
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon">🚀</div>
+            <h3>Fast Learner</h3>
+            <p>Quick to adapt to new technologies and methodologies</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">💡</div>
+            <h3>Problem Solver</h3>
+            <p>Love finding creative solutions to complex challenges</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🤝</div>
+            <h3>Team Player</h3>
+            <p>Excellent collaboration and communication skills</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="image-container">
+          <div class="image-frame">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Profile" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="floating-elements">
+            <div class="float-element element-1">
+              <span>React</span>
+            </div>
+            <div class="float-element element-2">
+              <span>Node.js</span>
+            </div>
+            <div class="float-element element-3">
+              <span>TypeScript</span>
+            </div>
+            <div class="float-element element-4">
+              <span>Next.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .title-number {
+    color: var(--primary);
+    font-weight: 300;
+    font-size: 0.8em;
+  }
+
+  .title-text {
+    color: var(--light);
+  }
+
+  .title-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--primary), transparent);
+    max-width: 300px;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  .about-highlights {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .highlight-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .highlight-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    transform: translateX(10px);
+  }
+
+  .highlight-icon {
+    font-size: 2rem;
+    grid-row: span 2;
+    align-self: center;
+  }
+
+  .highlight-card h3 {
+    font-size: 1.1rem;
+    color: var(--light);
+    margin: 0;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin: 0;
+  }
+
+  /* Image section */
+  .about-visual {
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .image-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .image-frame:hover {
+    transform: scale(1.02);
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient);
+    opacity: 0.2;
+    mix-blend-mode: multiply;
+    transition: opacity 0.3s ease;
+  }
+
+  .image-frame:hover .image-overlay {
+    opacity: 0.1;
+  }
+
+  /* Floating elements */
+  .floating-elements {
+    position: absolute;
+    inset: -50px;
+    pointer-events: none;
+  }
+
+  .float-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--light);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .element-1 {
+    top: -20px;
+    left: -20px;
+    animation-delay: 0s;
+  }
+
+  .element-2 {
+    top: 50px;
+    right: -30px;
+    animation-delay: 1s;
+  }
+
+  .element-3 {
+    bottom: 50px;
+    left: -40px;
+    animation-delay: 2s;
+  }
+
+  .element-4 {
+    bottom: -20px;
+    right: 20px;
+    animation-delay: 3s;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .about-visual {
+      order: -1;
+    }
+
+    .highlight-card {
+      padding: 1rem;
+    }
+
+    .floating-elements {
+      display: none;
+    }
+  }
+</style>

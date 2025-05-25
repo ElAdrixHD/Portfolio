@@ -1,0 +1,137 @@
+---
+// Particles background with animated gradient orbs
+---
+
+<div class="particles-container">
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+  <div class="noise"></div>
+</div>
+
+<style>
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.5;
+    animation: floatOrb 20s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at 30% 30%, #8b5cf6, transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation-duration: 25s;
+  }
+
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at 70% 70%, #ec4899, transparent 70%);
+    bottom: -150px;
+    right: -150px;
+    animation-duration: 30s;
+    animation-delay: -5s;
+  }
+
+  .orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at 50% 50%, #3b82f6, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 35s;
+    animation-delay: -10s;
+  }
+
+  /* Noise texture overlay */
+  .noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .noise::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px),
+      repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+  }
+
+  @keyframes floatOrb {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.1) rotate(120deg);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9) rotate(240deg);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .gradient-orb {
+      filter: blur(30px);
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+    }
+  }
+</style>
+
+<script>
+  // Add interactive mouse movement effect
+  const orbs = document.querySelectorAll('.gradient-orb');
+  
+  document.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    
+    const moveX = (clientX - centerX) * 0.01;
+    const moveY = (clientY - centerY) * 0.01;
+    
+    orbs.forEach((orb, index) => {
+      const speed = 1 + index * 0.5;
+      orb.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+    });
+  });
+</script>
