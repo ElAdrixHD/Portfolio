@@ -39,7 +39,6 @@ jobs:
           **/node_modules/**
           **/.env
           **/.DS_Store
-        dangerous-clean-slate: true
         
     # Verify deployment success
     - name: Deployment completed
